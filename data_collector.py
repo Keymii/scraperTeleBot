@@ -1,12 +1,9 @@
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
-import time
 from datetime import datetime
 def scrapeData(url):
     DRIVER_PATH = '/path/to/chromedriver'
-    # Quick Start Mode
-    # driver = webdriver.Chrome(executable_path=DRIVER_PATH)
 
     #Headless Mode
     options = Options()
@@ -95,5 +92,4 @@ def scrapeData(url):
             **additionalDetails
         }
     }
-    # print(data)
     return data

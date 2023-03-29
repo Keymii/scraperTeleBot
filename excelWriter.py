@@ -6,9 +6,6 @@ from io import BytesIO
 from urllib.request import urlopen
 from UliPlot.XLSX import auto_adjust_xlsx_column_width
 
-import openpyxl #remember to add it in requirements.txt
-import xlsxwriter #remember to add it in requirements.txt
-
 #authorization
 myclient = pymongo.MongoClient("mongodb://localhost:27017/")
 database = myclient["amazonItems"]

@@ -3,7 +3,6 @@ import telebot
 from dotenv.main import load_dotenv
 from excelWriter import generateXL
 import pymongo
-import time
 from data_collector import scrapeData
 from db_operations import addItem, filterWithUrl
 from datetime import datetime
@@ -11,7 +10,6 @@ import threading
 
 
 load_dotenv()
-# chat_ids=[] 
 BOT_TOKEN = os.environ.get('BOT_TOKEN')
 bot = telebot.TeleBot(BOT_TOKEN)
 
@@ -28,10 +26,18 @@ def filterWithChatId(chat_id,collection):
         return i
 
     
-@bot.message_handler(commands=['start', 'hello'])
+@bot.message_handler(commands=['start', 'hello','hi'])
 def send_welcome(message):
     bot.reply_to(message, "Howdy, how are you doing?")
-
+@bot.message_handler(commands=['help','h'])
+def send_help(message):
+    helpMsg="""**Use the following commands to access me**
+    /add <ASIN> : use this command to add ASIN number of a product you want to track
+    /report : use this command to obtain an .xlsx report
+    /notify : use this command to add yourself to the list of people who want chat notification
+    /help or /h : use this command to access this help message again"""
+    bot.reply_to(message,helpMsg)
+    pass
 @bot.message_handler(commands=['add'])
 def add_url(message):
     asin = message.text
