@@ -77,7 +77,7 @@ def scrapeData(url):
     except:
         pass
 
-    currTime=datetime.now().strftime('%D %H:%M:%S')
+    currTime=datetime.now().strftime('%d/%m/%y %H:%M:%S')
     data= {
         "url":url,
         "asin":asin,
